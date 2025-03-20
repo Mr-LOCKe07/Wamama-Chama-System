@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="{% static 'images/logo.svg'%}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup, Login & Registration</title>
+    <link rel="stylesheet" href="{% static 'css/css.css' %}">
+</head>
+<body>
+    <div class="overlay">
+        <div class="form-container">
+            <h2 id="form-title">Sign Up</h2>
+
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <!-- Signup Form -->
+            <form id="signup-form" method="POST" action="{% url 'sign_up' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="input-group">
+                    <label for="first_name">First Name</label>
+                    <input type="text" id="first_name" name="first_name" value="{{ signup_form.first_name.value|default:'' }}" required>
+                    <small class="error">{{ signup_form.first_name.errors }}</small>
+                </div>
+                <div class="input-group">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" id="last_name" name="last_name" value="{{ signup_form.last_name.value|default:'' }}" required>
+                    <small class="error">{{ signup_form.last_name.errors }}</small>
+                </div>
+                <div class="input-group">
+                    <label for="phone_number">Phone Number</label>
+                    <input type="text" id="phone_number" name="phone_number" value="{{ signup_form.phone_number.value|default:'' }}" required>
+                    <small class="error">{{ signup_form.phone_number.errors }}</small>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" value="{{ signup_form.email.value|default:'' }}" required>
+                    <small class="error">{{ signup_form.email.errors }}</small>
+                </div>
+                <div class="input-group">
+                    <label for="name_of_chama">Name of Chama</label>
+                    <input type="text" id="name_of_chama" name="name_of_chama" value="{{ signup_form.name_of_chama.value|default:'' }}" required>
+                    <small class="error">{{ signup_form.name_of_chama.errors }}</small>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <small class="error">{{ signup_form.password.errors }}</small>
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+                <p class="toggle-text">Already have an account? <a href="#" class="toggle-to-login">Login</a></p>
+                <p class="toggle-text">New Chama? <a href="#" id="toggle-to-register">Register Here</a></p>
+            </form>
+
+            <!-- Register Chama Form -->
+            <form id="register-form" method="POST" action="{% url 'register' %}" style="display: none;">
+
+                {% csrf_token %}
+                <div class="input-group">
+                    <label for="first_name">First Name</label>
+                    <input type="text" id="first_name" name="first_name" required>
+                </div>
+                <div class="input-group">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" id="last_name" name="last_name" required>
+                </div>
+                <div class="input-group">
+                    <label for="name_of_chama">Name of Chama</label>
+                    <input type="text" id="name_of_chama" name="name_of_chama" required>
+                </div>
+                <div class="input-group">
+                    <label for="phone_number">Phone Number</label>
+                    <input type="text" id="phone_number" name="phone_number" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="id_number">ID Number</label>
+                    <input type="number" id="id_number" name="id_number" required>
+                </div>
+                <div class="input-group">
+                    <label for="county">County</label>
+                    <input type="text" id="county" name="county" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn">Register</button>
+                <p class="toggle-text">Already have an account? <a href="#" id="toggle-to-login">Login</a></p>
+            </form>
+
+            <!-- Login Form -->
+            <form id="login-form" method="POST" action="{% url 'login' %}" style="display: none;">
+
+                
+                {% csrf_token %}
+                <div class="input-group">
+                    <label for="phone_number">Phone Number</label>
+                    <input type="text" id="phone_number" name="phone_number" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <p class="toggle-text">Don't have an account? <a href="#" id="toggle-to-signup">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="{% static 'js/js.js' %}"></script>
+</body>
+</html>

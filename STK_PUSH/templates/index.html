@@ -1,0 +1,137 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+<style>
+.articles-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+    align-items: center;
+}
+
+.article-card {
+    display: flex;
+    width: 90%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.article-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.article-thumbnail {
+    width: 40%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.article-content {
+    width: 60%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<section id="articles" class="section">
+    <div class="container text-center">
+        <h6 class="subtitle">Latest Articles</h6>
+        <h6 class="section-title mb-4">News for Women</h6>
+
+        <div class="articles-container">
+            <a href="https://www.hrw.org/news/2024/03/05/kenyan-women-arent-safe-and-will-no-longer-be-quiet" class="article-card" target="_blank">
+                <img src="{% static 'images/article1.jpg' %}" alt="Women's Rights in Kenya" class="article-thumbnail">
+                <div class="article-content">
+                    <h5 class="article-title">Women's Rights in Kenya</h5>
+                    <p class="article-description">How local policies and advocacy are empowering women.</p>
+                </div>
+            </a>
+            <a href="https://www.ampathkenya.org/womens-health" class="article-card" target="_blank">
+                <img src="{% static 'images/article2.jpg' %}" alt="Women's Health in Kenya" class="article-thumbnail">
+                <div class="article-content">
+                    <h5 class="article-title">Women's Health in Kenya</h5>
+                    <p class="article-description">Latest updates on healthcare and wellness for women.</p>
+                </div>
+            </a>
+            <a href="https://www.nytimes.com/spotlight/women-and-leadership" class="article-card" target="_blank">
+                <img src="{% static 'images/article3.jpg' %}" alt="Women in Leadership" class="article-thumbnail">
+                <div class="article-content">
+                    <h5 class="article-title">Women in Leadership</h5>
+                    <p class="article-description">How women are leading in business and politics.</p>
+                </div>
+            </a>
+            <a href="https://www.standardmedia.co.ke/health/fashion-and-beauty/article/2001503517/fashion-trends-threading-2024" class="article-card" target="_blank">
+                <img src="{% static 'images/article4.jpg' %}" alt="Kenyan Fashion Trends" class="article-thumbnail">
+                <div class="article-content">
+                    <h5 class="article-title">Kenyan Fashion Trends</h5>
+                    <p class="article-description">Latest fashion trends and beauty tips in Kenya.</p>
+                </div>
+            </a>
+            <a href="https://voices.ilo.org/stories/education-empowered-me-to-fight-for-womens-rights-in-kenya" class="article-card" target="_blank">
+                <img src="{% static 'images/article5.jpg' %}" alt="Empowering Kenyan Women" class="article-thumbnail">
+                <div class="article-content">
+                    <h5 class="article-title">Empowering Kenyan Women</h5>
+                    <p class="article-description">Stories of resilience and success from Kenyan women.</p>
+                </div>
+            </a>
+            <a href="https://www.pulselive.co.ke/lifestyle/beauty" class="article-card" target="_blank">
+                <img src="{% static 'images/article6.jpg' %}" alt="Beauty Trends in Kenya" class="article-thumbnail">
+                <div class="article-content">
+                    <h5 class="article-title">Beauty Trends in Kenya</h5>
+                    <p class="article-description">Find out the latest beauty and makeup trends.</p>
+                </div>
+            </a>
+            <a href="https://www.the-star.co.ke/news/2023-01-12-an-overview-of-the-kenyan-beauty-industry-trends-and-opportunities" class="article-card" target="_blank">
+                <img src="{% static '/images/article7.jpg' %}" alt="Luxury Fashion in Kenya" class="article-thumbnail">
+                <div class="article-content">
+                    <h5 class="article-title">Luxury Fashion in Kenya</h5>
+                    <p class="article-description">A look into Kenya's growing luxury fashion industry.</p>
+                </div>
+            </a>
+            <a href="https://nairobigarage.com/great-women-entrepreneurs-running-successful-businesses-in-kenya/" class="article-card" target="_blank">
+                <img src="{% static 'images/article8.jpg' %}" alt="Women Entrepreneurs in Kenya" class="article-thumbnail">
+                <div class="article-content">
+                    <h5 class="article-title">Women Entrepreneurs in Kenya</h5>
+                    <p class="article-description">How Kenyan women are shaping the business world.</p>
+                </div>
+            </a>
+            <a href="https://www.necesera.com/blogs/news/fashion-tips-for-every-woman?srsltid=AfmBOopdHGMB6uERu-kp261yPgvIPhSTRzoUVbW_xIa66eMmQ77bLlq4" class="article-card" target="_blank">
+                <img src="{% static 'images/article9.jpg' %}" alt="Everyday Fashion Tips" class="article-thumbnail">
+                <div class="article-content">
+                    <h5 class="article-title">Everyday Fashion Tips</h5>
+                    <p class="article-description">Style hacks every woman should know.</p>
+                </div>
+            </a>
+            <a href="https://www.scripps.org/news_items/6799-10-healthy-life-hacks-for-busy-women" class="article-card" target="_blank">
+                <img src="{% static 'images/article10.jpg' %}" alt="Lifestyle Choices for Women" class="article-thumbnail">
+                <div class="article-content">
+                    <h5 class="article-title">Lifestyle Choices for Women</h5>
+                    <p class="article-description">Discover tips on healthy living and personal growth.</p>
+                </div>
+            </a>
+            {% for article in articles %}
+            <a href="{{ article.link }}" class="article-card" target="_blank">
+                <img src="{{ article.image.url }}" alt="{{ article.title }}" class="article-thumbnail">
+                <div class="article-content">
+                    <h5 class="article-title">{{ article.title }}</h5>
+                    <p class="article-description">{{ article.headline }}</p>
+                </div>
+            </a>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}
