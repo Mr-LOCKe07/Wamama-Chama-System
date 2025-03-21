@@ -38,17 +38,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-document.getElementById("toggle-to-register").addEventListener("click", function(){
-    document.getElementById("form-title").innerText = "Register Chama";
-})
-document.getElementById("toggle-to-signup").addEventListener("click", function(){
-    document.getElementById("form-title").innerText = "Sign Up";
-})
-document.getElementById("toggle-to-login").addEventListener("click", function(){
-    document.getElementById("form-title").innerText = "Login";
-})
-document.getElementById("toggle-to-login").addEventListener("click", function(){
-    document.getElementById("register-form").style.display = "none";
-    document.getElementById("signup-form").style.display = "none";
-    document.getElementById("login-form").style.display = "block";
+document.addEventListener("DOMContentLoaded", function () {
+    const formTitle = document.getElementById("form-title");
+    const signupForm = document.getElementById("signup-form");
+    const registerForm = document.getElementById("register-form");
+    const loginForm = document.getElementById("login-form");
+
+    // Set correct title based on visible form
+    if (loginForm.style.display === "block") {
+        formTitle.innerText = "Login";
+    } else if (signupForm.style.display === "block") {
+        formTitle.innerText = "Sign Up";
+    } else if (registerForm.style.display === "block") {
+        formTitle.innerText = "Register Chama";
+    }
 });

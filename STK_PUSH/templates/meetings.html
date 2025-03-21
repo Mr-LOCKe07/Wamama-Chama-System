@@ -6,7 +6,7 @@
     <h2 class="text-center text-primary " style="padding: 50px">Chama Meeting</h2>
     <p class="lead text-center">Welcome to our monthly women's group meeting. This month, we will be gathering at:</p>
     {% for meeting in meetings %}
-    <div class="venue mt-4" style="padding: 20px;">
+    <div class="venue" style="padding: 20px;">
         <p><strong>Venue:</strong> <span class="text-muted">{{ meeting.venue }}</span></p>
         <p><strong>Date:</strong> <span class="text-muted">{{ meeting.date }}</span></p>
         <p><strong>Time:</strong> <span class="text-muted">{{ meeting.time }}</span></p>
