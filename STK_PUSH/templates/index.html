@@ -53,6 +53,15 @@
         <h6 class="section-title mb-4">News for Women</h6>
 
         <div class="articles-container">
+         {% for article in articles %}
+            <a href="{{ article.link }}" class="article-card" target="_blank">
+                <img src="{{ article.image.url }}" alt="{{ article.title }}" class="article-thumbnail">
+                <div class="article-content">
+                    <h5 class="article-title">{{ article.title }}</h5>
+                    <p class="article-description">{{ article.headline }}</p>
+                </div>
+            </a>
+        {% endfor %}
             <a href="https://www.hrw.org/news/2024/03/05/kenyan-women-arent-safe-and-will-no-longer-be-quiet" class="article-card" target="_blank">
                 <img src="{% static 'images/article1.jpg' %}" alt="Women's Rights in Kenya" class="article-thumbnail">
                 <div class="article-content">
@@ -123,15 +132,6 @@
                     <p class="article-description">Discover tips on healthy living and personal growth.</p>
                 </div>
             </a>
-            {% for article in articles %}
-            <a href="{{ article.link }}" class="article-card" target="_blank">
-                <img src="{{ article.image.url }}" alt="{{ article.title }}" class="article-thumbnail">
-                <div class="article-content">
-                    <h5 class="article-title">{{ article.title }}</h5>
-                    <p class="article-description">{{ article.headline }}</p>
-                </div>
-            </a>
-        {% endfor %}
         </div>
     </div>
 {% endblock %}

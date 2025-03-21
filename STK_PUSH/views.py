@@ -226,6 +226,7 @@ def register(request):
 # Meetings Management
 def meetings(request):
     meetings = Meetings.objects.all()
+    print(meetings)
     return render(request, 'meetings.html', {'meetings': meetings})
 
 
