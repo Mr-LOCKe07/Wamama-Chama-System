@@ -239,7 +239,7 @@ def add_meeting(request):
         form = Meet(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('dashboard')
+            return redirect('admin_dashboard')
     else:
         form = Meet()
     return render(request, 'admin_dashboard.html', {'form': form})
