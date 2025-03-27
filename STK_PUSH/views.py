@@ -231,7 +231,7 @@ def meetings(request):
 
 
 def dashboard(request):
-    return render(request, 'admin-dashboard.html')
+    return render(request, 'admin_dashboard.html')
 
 
 def add_meeting(request):
@@ -242,7 +242,7 @@ def add_meeting(request):
             return redirect('dashboard')
     else:
         form = Meet()
-    return render(request, 'admin-dashboard.html', {'form': form})
+    return render(request, 'admin_dashboard.html', {'form': form})
 
 
 def meeting_detail(request, meeting_id):
@@ -256,11 +256,11 @@ def admin_dashboard(request):
         if form.is_valid():
             Meetings.objects.all().delete()
             form.save()
-            return redirect('admin-dashboard')
+            return redirect('admin_dashboard')
     else:
         form = Meet()
     meetings = Meetings.objects.all()
-    return render(request, 'admin-dashboard.html', {'form': form, 'meetings': meetings})
+    return render(request, 'admin_dashboard.html', {'form': form, 'meetings': meetings})
 
 
 def delete_meeting(request, meeting_id):
@@ -268,7 +268,7 @@ def delete_meeting(request, meeting_id):
     if request.method == 'POST':
         meeting.delete()
         return redirect('admin-dashboard')
-    return render(request, 'admin-dashboard.html')
+    return render(request, 'admin_dashboard.html')
 
 
 # User Login
@@ -315,7 +315,7 @@ def admin_login(request):
             if check_password(password, admin.password):
                 messages.success(request, "Login successful!")
                 request.session['admin_id'] = admin.id
-                return redirect("dashboard")
+                return redirect("admin_dashboard")
             else:
                 messages.error(request, "Invalid credentials. Please try again.")
         except RegisterChama.DoesNotExist:
@@ -341,7 +341,7 @@ def articles(request):
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('dashboard')  # Redirect after saving
+            return redirect('admin_dashboard')  # Redirect after saving
         else:
             print("Form Errors:", form.errors)  # Debugging line
 
@@ -349,5 +349,5 @@ def articles(request):
         form = ArticleForm()
 
     articles = Article.objects.all()
-    return render(request, 'admin-dashboard.html', {'form': form, 'articles': articles})
+    return render(request, 'admin_dashboard.html', {'form': form, 'articles': articles})
 

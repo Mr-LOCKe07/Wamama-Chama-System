@@ -37,12 +37,12 @@
                         <a class="nav-link" href="{% url 'method' %}">Contribute</a>
                     </li>                   
                     <li class="nav-item">
-                        <a class="btn btn-primary rounded ml-4" href="{% url 'admin_sign' %}">Admin</a>
+                        <a class="btn btn-primary rounded ml-4" href="{% url 'admin_login' %}">Admin</a>
                     </li>
                     <li>
                         <form method="post" action="{% url 'user_logout' %}" style="margin: 0;">
                         {% csrf_token %}
-                        <button type="submit" style="background: none; border: none; color: black; cursor: pointer; padding: 60px;">Logout</button>
+                        <button type="submit" style="background: none; border: none; color: black; cursor: pointer; padding: 20px;">Logout</button>
                         </form>
                     </li>
                 </ul>
