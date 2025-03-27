@@ -214,7 +214,7 @@
     <!-- Add Meeting Form -->
     <div class="add-meeting-form">
         <h1 class="text-center m-4 bg-info"> Add Meeting </h1>
-        <form method="post" action="{% url 'articles' %}" enctype="multipart/form-data">
+        <form method="post" action="{% url 'add_meeting' %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
                 <label for="meeting-venue">Meeting Venue</label>
